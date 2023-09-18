@@ -49,7 +49,7 @@
           color: white;
 
           &.invalid {
-            border-color: red;
+            border-color: rgb(180, 74, 74);
             &::placeholder {
               color: rgb(180, 74, 74);
             }

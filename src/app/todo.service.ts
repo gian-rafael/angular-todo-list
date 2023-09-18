@@ -21,7 +21,6 @@ export class TodoService {
       switchMap(() => this.http.get<Todo[]>(this.TODO_API)),
       catchError((error) => throwError(error))
     );
-    // return this.http.get<Todo[]>(this.TODO_API);
   }
 
   addTodo(todo: Pick<Todo, "task" | "status">): Observable<Todo> {
