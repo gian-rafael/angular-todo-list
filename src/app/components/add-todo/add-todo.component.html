@@ -1,0 +1,16 @@
+<section [class.show-add-todo]="isOpen$ | async" class="add-todo">
+  <form (ngSubmit)="addTodo(form.value, form)" #form="ngForm">
+    <div class="fields">
+      <label class="todo-input-container" [class.invalid]="task.dirty && (task.errors?.required || task.value.trim() === '')">
+        <input type="text" class="todo-input"
+          [class.invalid]="task.dirty && (task.errors?.required || task.value.trim() === '')" name="task"
+          placeholder="Add Something To Do..." [(ngModel)]="userInput" required #task="ngModel">
+      </label>
+      <select name="priority" [(ngModel)]="priority" #priorityValue="ngModel" required>
+        <option value="" selected disabled class="default-option">Select Priority</option>
+        <option *ngFor="let priority of priorityOptions" [value]="priority.value"> {{priority.name}} </option>
+      </select>
+    </div>
+    <button type="submit" [disabled]="form.invalid || priorityValue === NO_PRIORITY_SELECTED">Add Todo</button>
+  </form>
+</section>

@@ -1,0 +1,149 @@
+.add-todo {
+  width: 90%;
+  height: 0;
+  padding-block: 0;
+  margin: auto;
+  margin-bottom: 0;
+  transition: 0.3s all ease;
+  overflow: hidden;
+
+  &.show-add-todo {
+    padding-block: 0.5rem 6.8rem;
+    margin-bottom: 1rem;
+    @media (min-width: 1025px) {
+      padding-block: 0.5rem 6.8rem;
+    }
+  }
+
+  form {
+    position: relative;
+    width: 100%;
+
+    .fields {
+      display: flex;
+      position: relative;
+      align-items: stretch;
+      margin-bottom: 0.5rem;
+      flex-direction: column;
+      margin-bottom: 3px;
+
+      @media (min-width: 1025px) {
+        flex-direction: row;
+      }
+
+      label {
+        position: relative;
+        display: block;
+        flex: 1;
+
+        .todo-input {
+          border: none;
+          outline: none;
+          background-color: transparent;
+          width: 100%;
+          text-align: center;
+          border-bottom: 1px solid gray;
+          padding: 0.5rem;
+          display: block;
+          position: relative;
+          color: white;
+
+          &.invalid {
+            border-color: red;
+            &::placeholder {
+              color: rgb(180, 74, 74);
+            }
+          }
+        }
+        &:after {
+          content: "";
+          position: absolute;
+          display: block;
+          top: 99%;
+          width: 0%;
+          height: 1px;
+          background-color: white;
+          left: 50%;
+          transform: translateX(-50%);
+          transition: all 0.3s ease;
+        }
+
+        &:focus-within:after {
+          width: 100%;
+        }
+
+        &.invalid {
+          &:after {
+            background-color: red;
+          }
+        }
+      }
+
+      select {
+        outline: none;
+        background-color: transparent;
+        color: white;
+        font-weight: bold;
+        text-transform: uppercase;
+        border: 1px solid white;
+        padding: 0.25rem;
+        text-align: center;
+
+        &:hover {
+          background: white;
+          color: black;
+        }
+
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+
+        .default-option {
+          color: #999;
+        }
+
+        option:not(:first-child) {
+          border-bottom: 1px solid white;
+        }
+
+        option {
+          background-color: black;
+          border-inline: 1px solid white;
+          color: white;
+          width: 100%;
+          text-align: center;
+          padding: 0;
+
+          &:hover {
+            color: black;
+            background-color: white;
+          }
+        }
+      }
+    }
+    button {
+      border: 2px solid white;
+      background-color: white;
+      outline: none;
+      color: black;
+      text-transform: uppercase;
+      font-weight: bold;
+      width: 100%;
+      padding: 0.4rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+
+      &:disabled {
+        border-color: gray;
+        color: gray;
+        background-color: transparent;
+        cursor: auto;
+      }
+
+      &:hover:not(:disabled) {
+        color: white;
+        background: transparent;
+      }
+    }
+  }
+}

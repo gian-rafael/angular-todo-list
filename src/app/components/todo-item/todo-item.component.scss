@@ -1,0 +1,138 @@
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.85rem;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0px 10px 15px -3px rgba(0, 0, 0, 0.1);
+  margin: auto;
+  width: 90%;
+  transition: 0.3s ease;
+  margin-bottom: 0.25rem;
+  position: relative;
+
+  .priority {
+    position: absolute;
+    bottom: 100%;
+    left: 100%;
+    transform: translate(-50%, 65%);
+    font-size: 1rem;
+  }
+
+  @media (min-width: 1025px) {
+    padding: 1rem;
+  }
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  .green {
+    color: #23d18b;
+    &.disabled {
+      color: #4fb68d;
+    }
+  }
+
+  .red {
+    color: #dd2128;
+    &.disabled {
+      color: #a15356;
+    }
+  }
+
+  .yellow {
+    color: #cca700;
+  }
+
+  button {
+    background: transparent;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s ease;
+
+    &:hover:not(:disabled) {
+      transform: rotate(15deg);
+    }
+
+    &:disabled {
+      cursor: auto;
+    }
+  }
+
+  .todo-task {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    // input[type="checkbox"] {
+    //   margin-right: 0.25rem;
+    // }
+
+    span {
+      display: block;
+      margin-right: 0.25rem;
+    }
+
+    p {
+      user-select: none;
+      padding-inline: 0.5rem;
+
+      &.completed {
+        text-decoration: line-through;
+      }
+    }
+
+    form {
+      position: relative;
+      display: flex;
+      align-items: stretch;
+
+      .form-group {
+        position: relative;
+        margin-right: 0.25rem;
+        .edit-todo-input {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          border-bottom: 1px solid black;
+          padding-inline: 0.5rem;
+
+          &.invalid-input {
+            border-bottom-color: red;
+          }
+
+          &::placeholder {
+            color: rgba(255, 0, 0, 0.7);
+            font-size: 1.2rem;
+          }
+        }
+      }
+      .error-icon {
+        position: absolute;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        color: red;
+      }
+
+      select {
+        outline: none;
+        border: 1px solid black;
+      }
+
+    }
+  }
+
+  .todo-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    *:not(-last-child) {
+      margin-right: 0.25rem;
+    }
+  }
+}

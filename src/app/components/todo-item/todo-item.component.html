@@ -1,0 +1,33 @@
+<div class="todo-item">
+  <span class="priority" *ngIf="['medium', 'high'].includes(todo.priority)">
+    <i class="fa-solid fa-circle-exclamation"
+      [ngClass]="{'red':todo.priority === 'high', 'yellow': todo.priority === 'medium' }"></i>
+  </span>
+  <div class="todo-task" (click)="toggleTodo()">
+    <span *ngIf="!editting">
+      <i *ngIf="todo.status === 'completed'" class="fa-solid fa-times red"></i>
+      <i *ngIf="todo.status === 'pending'" class="fa-solid fa-check green"></i>
+    </span>
+    <p *ngIf="!editting" [class.completed]="todo.status === 'completed'">{{ todo.task }}</p>
+    <form #form="ngForm" (ngSubmit)="editTodo(form)" id="editForm" *ngIf="editting">
+      <div class="form-group">
+        <input name="" type="text" name="task" #task="ngModel" class="edit-todo-input"
+          [class.invalid-input]="task.errors?.required && task.dirty" [(ngModel)]="todo.task" required
+          placeholder="Invalid Input">
+        <i *ngIf="form.invalid" class="fa-solid fa-circle-exclamation error-icon"></i>
+      </div>
+      <select name="priority" [(ngModel)]="todo.priority" required>
+        <option value="" selected disabled class="default-option">Selet Priority</option>
+        <option *ngFor="let priority of priorityOptions" [ngValue]="priority.value"> {{priority.name}} </option>
+      </select>
+    </form>
+  </div>
+  <div class="todo-actions">
+    <button (click)="editTodo(form)" [disabled]="form?.invalid">
+      <i *ngIf="!editting" class="fa-solid fa-pencil-alt yellow"></i>
+      <i *ngIf="editting" class="fa-solid fa-floppy-disk green" [class.disabled]="form?.invalid"></i>
+    </button>
+    <button (click)="deleteTodo()" [disabled]="editting"><i [class.disabled]="editting"
+        class="fa-solid fa-trash red"></i></button>
+  </div>
+</div>

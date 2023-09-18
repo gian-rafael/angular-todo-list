@@ -1,0 +1,72 @@
+.app {
+  padding-top: 0;
+  margin: auto;
+  width: 100%;
+  height: 100%;
+  // For Mobile Devices – 320px — 480px
+  // iPads and Tablets – 481px — 768px
+  // Laptops and small screen – 769px — 1024px
+  // Large screens and Desktops – 1025px — 1200px
+  // TV and Extra Large Screens – 1201px and more
+  @media (min-width: 769px) and (max-width: 1024px) {
+    width: 85%;
+    header {
+      padding: 0.5rem 1rem;
+    }
+  }
+
+  @media (min-width: 1025px) {
+    width: 75%;
+  }
+
+  header {
+    width: 100%;
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: start;
+    align-items: stretch;
+    flex-direction: column;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    background: black;
+    padding: 1rem 2rem;
+    color: white;
+    border-bottom-left-radius: 12px;
+    border-bottom-right-radius: 12px;
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    button {
+      border: none;
+      outline: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+      border-radius: 100%;
+      height: 2rem;
+      width: 2rem;
+      color: white;
+
+      @media (min-width: 1025px) {
+        height: 3rem;
+        width: 3rem;
+      }
+
+      &:hover {
+        transform: rotate(15deg);
+        background: rgba(255, 255, 255, 0.8);
+        color: black;
+      }
+
+      &.close {
+        transform: rotate(45deg);
+      }
+    }
+  }
+}

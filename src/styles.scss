@@ -1,0 +1,33 @@
+/* You can add global styles to this file, and also import other style files */
+*,
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #eee;
+}
+
+@media (min-width: 1025px) {
+  h1 {
+    font-size: 3rem;
+  }
+
+  p,
+  span,
+  label,
+  input {
+    font-size: 1.6rem;
+  }
+
+  button {
+    font-size: 1.4rem;
+  }
+}
