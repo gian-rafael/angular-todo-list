@@ -1,0 +1,15 @@
+<div class="filters">
+  <h2>Priority Filter:</h2>
+  <label class="filter-option" for="high">
+    <div class="checkbox" [class.checked]="filters.high === true"></div>
+    <input id="high" (change)="setFilters()" type="checkbox" name="high" [(ngModel)]="filters.high"> High
+  </label>
+  <label class="filter-option" for="medium">
+    <div class="checkbox" [class.checked]="filters.medium === true"></div>
+    <input id="medium" (change)="setFilters()" type="checkbox" name="medium" [(ngModel)]="filters.medium"> Medium
+  </label>
+  <label class="filter-option" for="low">
+    <div class="checkbox" [class.checked]="filters.low === true"></div>
+    <input id="low" (change)="setFilters()" type="checkbox" name="low" [(ngModel)]="filters.low"> Low
+  </label>
+</div>

@@ -1,34 +1,28 @@
 {
   "todos": [
     {
-      "task": "test",
-      "status": "completed",
-      "priority": "low",
-      "id": 20
-    },
-    {
-      "task": "test",
-      "status": "completed",
-      "priority": "low",
-      "id": 21
-    },
-    {
-      "task": "asdsadgnsad",
-      "status": "completed",
-      "priority": "low",
-      "id": 22
-    },
-    {
-      "task": "Test",
-      "status": "completed",
-      "priority": "low",
-      "id": 23
-    },
-    {
-      "task": "sample",
+      "task": "Study Angular Fundamentals",
       "status": "pending",
       "priority": "medium",
-      "id": 24
+      "id": 1
+    },
+    {
+      "task": "Study Angular Pro Course",
+      "status": "pending",
+      "priority": "medium",
+      "id": 2
+    },
+    {
+      "task": "Finish To Do List",
+      "status": "pending",
+      "priority": "high",
+      "id": 3
+    },
+    {
+      "task": "Wash the dishes",
+      "status": "pending",
+      "priority": "low",
+      "id": 4
     }
   ]
 }

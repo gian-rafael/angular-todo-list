@@ -6,6 +6,7 @@
         <i class="fa-solid fa-add"></i>
       </button>
     </div>
+    <app-filter-todo></app-filter-todo>
     <app-add-todo (add)="onAdd($event)"></app-add-todo>
   </header>
   <app-todo-list [todos]="todos$ | async" (edit)="onUpdate($event)" (toggle)="onUpdate($event)"
