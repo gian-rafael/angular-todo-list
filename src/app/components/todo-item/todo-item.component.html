@@ -11,7 +11,7 @@
     <p *ngIf="!editting" [class.completed]="todo.status === 'completed'">{{ todo.task }}</p>
     <form #form="ngForm" (ngSubmit)="editTodo(form)" id="editForm" *ngIf="editting">
       <div class="form-group">
-        <input name="" type="text" name="task" #task="ngModel" class="edit-todo-input"
+        <input type="text" name="task" #task="ngModel" class="edit-todo-input"
           [class.invalid-input]="task.errors?.required && task.dirty" [(ngModel)]="todo.task" required
           placeholder="Invalid Input">
         <i *ngIf="form.invalid" class="fa-solid fa-circle-exclamation error-icon"></i>
@@ -23,9 +23,9 @@
     </form>
   </div>
   <div class="todo-actions">
-    <button (click)="editTodo(form)" [disabled]="form?.invalid">
+    <button type="button" (click)="editTodo(form)" [disabled]="todo.task.trim() === ''">
       <i *ngIf="!editting" class="fa-solid fa-pencil-alt yellow"></i>
-      <i *ngIf="editting" class="fa-solid fa-floppy-disk green" [class.disabled]="form?.invalid"></i>
+      <i *ngIf="editting" class="fa-solid fa-floppy-disk green" [class.disabled]="todo.task.trim() === ''"></i>
     </button>
     <button (click)="deleteTodo()" [disabled]="editting"><i [class.disabled]="editting"
         class="fa-solid fa-trash red"></i></button>

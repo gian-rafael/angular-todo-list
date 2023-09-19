@@ -54,7 +54,7 @@ export class TodoItemComponent implements OnChanges {
 
   editTodo(form?: NgForm) {
     if (this.editting) {
-      if (form && form.invalid) {
+      if (form && form.invalid || this.todo.task === "") {
         return;
       }
       this.edit.emit(this.todo);
