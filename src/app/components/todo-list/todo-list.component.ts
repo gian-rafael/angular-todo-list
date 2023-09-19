@@ -43,11 +43,9 @@ export class TodoListComponent implements OnChanges, OnInit, OnDestroy {
       .pipe(switchMap(() => this.filterService.filters))
       .subscribe((filters) => {
         if (this.todos) {
-          console.log(filters);
           this.selectedTodos$.next(
             this.todos.filter((todo) => filters[todo.priority] === true)
           );
-          console.log(this.selectedTodos$.value);
         }
       });
   }

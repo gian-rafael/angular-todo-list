@@ -1,28 +1,22 @@
 {
   "todos": [
     {
-      "task": "Study Angular Fundamentals",
+      "task": "learn angular",
       "status": "pending",
       "priority": "medium",
       "id": 1
     },
     {
-      "task": "Study Angular Pro Course",
+      "task": "test",
       "status": "pending",
-      "priority": "medium",
+      "priority": "low",
       "id": 2
     },
     {
-      "task": "Finish To Do List",
-      "status": "pending",
-      "priority": "high",
-      "id": 3
-    },
-    {
-      "task": "Wash the dishes",
+      "task": "pay rent",
       "status": "pending",
       "priority": "low",
-      "id": 4
+      "id": 3
     }
   ]
 }
