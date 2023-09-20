@@ -1,15 +1,18 @@
 <div class="filters">
   <h2>Priority Filter:</h2>
   <label class="filter-option" for="high">
+    <input [disabled]="!(inputState$ | async)?.high" id="high" (click)="setFilters($event)" type="checkbox" name="high"
+      [(ngModel)]="filters.high"> <span>High</span>
     <div class="checkbox" [class.checked]="filters.high === true"></div>
-    <input id="high" (click)="setFilters($event)" type="checkbox" name="high" [(ngModel)]="filters.high"> High
   </label>
   <label class="filter-option" for="medium">
+    <input [disabled]="!(inputState$ | async)?.medium" id="medium" (click)="setFilters($event)" type="checkbox"
+      name="medium" [(ngModel)]="filters.medium"> <span>Medium</span>
     <div class="checkbox" [class.checked]="filters.medium === true"></div>
-    <input id="medium" (click)="setFilters($event)" type="checkbox" name="medium" [(ngModel)]="filters.medium"> Medium
   </label>
   <label class="filter-option" for="low">
+    <input [disabled]="!(inputState$ | async)?.low" id="low" (click)="setFilters($event)" type="checkbox" name="low"
+      [(ngModel)]="filters.low"> <span>Low</span>
     <div class="checkbox" [class.checked]="filters.low === true"></div>
-    <input id="low" (click)="setFilters($event)" type="checkbox" name="low" [(ngModel)]="filters.low"> Low
   </label>
 </div>

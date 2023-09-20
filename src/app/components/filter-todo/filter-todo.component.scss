@@ -19,11 +19,22 @@
     align-items: center;
     font-size: 1.2rem;
 
-    
     input {
       display: block;
       opacity: 0;
       margin-right: 0.9rem;
+    }
+
+    input:disabled ~ .checkbox {
+      border-color: #ffffff77;
+
+      &:after {
+        background-color: #ffffff77;
+      }
+    }
+
+    input:disabled + span {
+      color: #ffffff77;
     }
 
     .checkbox {
