@@ -1,18 +1,15 @@
 .add-todo {
-  width: 90%;
-  height: 0;
-  padding-block: 0;
-  margin: auto;
-  margin-bottom: 0;
-  transition: 0.3s all ease;
+  width: 100%;
+  padding-block: 0rem;
+  transition: 0.4s all ease;
   overflow: hidden;
+  position: relative;
+  max-height: 0rem;
 
   &.show-add-todo {
-    padding-block: 0.5rem 6.8rem;
-    margin-bottom: 1rem;
-    @media (min-width: 1025px) {
-      padding-block: 0.5rem 6.8rem;
-    }
+    // padding-block: 0.5rem 6.8rem;
+    padding-block: 1rem;
+    max-height: 10rem;
   }
 
   form {
