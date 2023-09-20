@@ -28,12 +28,6 @@ export class AppComponent implements OnInit {
     this.todos$ = this.todoService.getTodos();
   }
 
-  addTodo() {
-    this.todoService
-      .addTodo({ status: "pending", task: "do laundry" })
-      .subscribe();
-  }
-
   toggleAddTodo() {
     this.addTodoService.toggleTodo();
   }
