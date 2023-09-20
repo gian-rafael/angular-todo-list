@@ -8,6 +8,7 @@
     </div>
     <app-filter-todo [todos$]="todos$"></app-filter-todo>
     <app-add-todo (add)="onAdd($event)"></app-add-todo>
+    <small class="errors" *ngIf="errors$ | async as errors">{{ errorMessages[errors] }}</small>
   </header>
   <app-todo-list [todos]="todos$ | async" (edit)="onUpdate($event)" (toggle)="onUpdate($event)"
     (delete)="onDelete($event)">
