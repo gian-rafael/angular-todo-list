@@ -7,7 +7,7 @@ import {
 } from "@angular/core";
 
 import { PriorityOption, Todo } from "../../models/todo";
-import { NgForm } from "@angular/forms";
+import { NgForm, NgModel } from "@angular/forms";
 
 @Component({
   selector: "app-todo-item",

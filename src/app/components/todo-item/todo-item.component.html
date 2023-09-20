@@ -13,7 +13,7 @@
       <div class="form-group">
         <input type="text" name="task" #task="ngModel" class="edit-todo-input"
           [class.invalid-input]="task.errors?.required && task.dirty" [(ngModel)]="todo.task" required
-          placeholder="Invalid Input">
+          placeholder="Invalid Input" maxlength="30">
         <i *ngIf="form.invalid" class="fa-solid fa-circle-exclamation error-icon"></i>
       </div>
       <select name="priority" [(ngModel)]="todo.priority" required>

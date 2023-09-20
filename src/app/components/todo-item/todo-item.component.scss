@@ -64,12 +64,9 @@
 
   .todo-task {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     align-items: center;
-
-    // input[type="checkbox"] {
-    //   margin-right: 0.25rem;
-    // }
+    flex: 1;
 
     span {
       display: block;
@@ -89,15 +86,19 @@
       position: relative;
       display: flex;
       align-items: stretch;
+      width: 100%;
+      margin-right: 2rem;
 
       .form-group {
         position: relative;
         margin-right: 0.25rem;
+        flex: 1;
         .edit-todo-input {
           background-color: transparent;
           border: none;
           outline: none;
           border-bottom: 1px solid black;
+          width: 100%;
           padding-inline: 0.5rem;
 
           &.invalid-input {
@@ -122,7 +123,6 @@
         outline: none;
         border: 1px solid black;
       }
-
     }
   }
 
