@@ -14,7 +14,9 @@ import { Todo, PriorityOption } from "../../models/todo";
 @Component({
   selector: "app-add-todo",
   templateUrl: "./add-todo.component.html",
-  styleUrls: ["./add-todo.component.scss"],
+  styleUrls: [
+//"./add-todo.component.scss"
+],
 })
 export class AddTodoComponent implements OnInit, OnDestroy {
   @Output() add = new EventEmitter<

@@ -8,7 +8,9 @@ import { switchMap } from "rxjs/operators";
 @Component({
   selector: "app-filter-todo",
   templateUrl: "./filter-todo.component.html",
-  styleUrls: ["./filter-todo.component.scss"],
+  styleUrls: [
+//"./filter-todo.component.scss"
+],
 })
 export class FilterTodoComponent implements OnInit {
   filters: FilterOptions = {

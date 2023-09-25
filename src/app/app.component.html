@@ -1,14 +1,15 @@
-<main class="app">
-  <header>
-    <div class="header">
-      <h1>Todo List</h1>
-      <button (click)="toggleAddTodo()" [class.close]="showAddTodo$ | async">
+<main class="container-fluid p-0">
+  <header class="bg-dark text-light col-12 col-lg-6 offset-lg-3">
+    <div class="d-flex justify-content-between align-items-center px-4 pt-4 pb-2">
+      <h1 class="h1 m-0">Todo List</h1>
+      <button (click)="toggleAddTodo()" [ngClass]="{'btn-close bg-danger': showAddTodo$ | async}"
+        class="btn btn-primary rounded-circle">
         <i class="fa-solid fa-add"></i>
       </button>
     </div>
     <app-filter-todo [todos$]="todos$"></app-filter-todo>
     <app-add-todo (add)="onAdd($event)"></app-add-todo>
-    <small class="errors" *ngIf="errors$ | async as errors">{{ errorMessages[errors] }}</small>
+    <small class="text-danger" *ngIf="errors$ | async as errors">{{ errorMessages[errors] }}</small>
   </header>
   <app-todo-list [todos]="todos$ | async" (edit)="onUpdate($event)" (toggle)="onUpdate($event)"
     (delete)="onDelete($event)">

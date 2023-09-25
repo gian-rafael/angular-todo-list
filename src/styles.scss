@@ -1,4 +1,5 @@
 /* You can add global styles to this file, and also import other style files */
+/*
 *,
 html,
 body {
@@ -33,5 +34,24 @@ body {
 
   button {
     font-size: 1.4rem;
+  }
+}
+*/
+
+* {
+  transition: 0.3s ease;
+}
+
+.btn {
+  &-close {
+    transform: rotate(45deg);
+  }
+}
+
+.add-todo {
+  max-height: 0rem;
+
+  &.show-add-todo {
+    max-height: 10rem;
   }
 }

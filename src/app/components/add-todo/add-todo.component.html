@@ -1,4 +1,21 @@
-<section [class.show-add-todo]="isOpen$ | async" class="add-todo">
+<section [ngClass]="{'show-add-todo pb-4 mt-4': isOpen$ | async}" class="d-flex flex-column add-todo overflow-hidden">
+  <form (ngSubmit)="addTodo(form.value, form)" #form="ngForm" class="d-flex flex-column">
+    <div class="input-group px-4">
+      <input type="text" class="form-control"
+        [class.invalid]="task.dirty && (task.errors?.required || task.value.trim() === '')" name="task"
+        placeholder="Add Something To Do..." [(ngModel)]="userInput" required #task="ngModel">
+      <div class="input-group-append">
+        <select class="form-control" name="priority" [(ngModel)]="priority" #priorityValue="ngModel" required>
+          <option value="" selected disabled class="default-option">Select Priority</option>
+          <option *ngFor="let priority of priorityOptions" [value]="priority.value"> {{priority.name}} </option>
+        </select>
+      </div>
+    </div>
+    <button class="btn btn-primary mx-4" type="submit"
+      [disabled]="form.invalid || priorityValue === NO_PRIORITY_SELECTED">Add Todo</button>
+  </form>
+</section>
+<!-- <section [class.show-add-todo]="isOpen$ | async" class="add-todo">
   <form (ngSubmit)="addTodo(form.value, form)" #form="ngForm">
     <div class="fields">
       <label class="todo-input-container" [class.invalid]="task.dirty && (task.errors?.required || task.value.trim() === '')">
@@ -13,4 +30,4 @@
     </div>
     <button type="submit" [disabled]="form.invalid || priorityValue === NO_PRIORITY_SELECTED">Add Todo</button>
   </form>
-</section>
+</section> -->

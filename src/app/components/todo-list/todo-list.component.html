@@ -1,6 +1,5 @@
-<div class="todo-items" *ngIf="todos && todos.length > 0">
+<div class="col-12 offset-lg-3 col-lg-6" *ngIf="todos && todos.length > 0">
   <app-todo-item *ngFor="let todo of selectedTodos$ | async" [todo]="todo" (edit)="onEdit($event)"
     (toggle)="onToggle($event)" (delete)="onDelete($event)"></app-todo-item>
 </div>
-<p *ngIf="(selectedTodos$ | async)?.length === 0" class="empty-todos">There are no pending tasks</p>
-<!-- <p *ngIf="!(todos && todos.length > 0)" class="empty-todos">There are no pending tasks</p> -->
+<p *ngIf="(selectedTodos$ | async)?.length === 0" class="text-center my-4">There are no pending tasks</p>
