@@ -3,7 +3,7 @@ import { Todo } from "src/app/models/todo";
 import { FilterOptions, TodoFilterService } from "src/app/todo-filter.service";
 
 import { Observable, of } from "rxjs";
-import { switchMap } from "rxjs/operators";
+import { switchMap, tap } from "rxjs/operators";
 
 @Component({
   selector: "app-filter-todo",
@@ -35,14 +35,23 @@ export class FilterTodoComponent implements OnInit {
 
     this.inputState$ = this.todos$.pipe(
       switchMap((todos: Todo[]) =>
+        // Disabled checkbox/option if there are no items to show
         of({
-          low: todos.some((todo) => this.isFilterEnabled(todo, "low")),
-          medium: todos.some((todo) => this.isFilterEnabled(todo, "medium")),
-          high: todos.some((todo) => this.isFilterEnabled(todo, "high")),
+          low: todos.some((todo) => todo.priority === "low"),
+          medium: todos.some((todo) => todo.priority === "medium"),
+          high: todos.some((todo) => todo.priority === "high"),
           completed: todos.some((todo) => todo.status === "completed"),
           pending: todos.some((todo) => todo.status === "pending"),
         })
-      )
+      ),
+      // Toggle off priority checkbox if there are no items to show
+      tap((inputState) => {
+        ["low", "medium", "high"].forEach((key) => {
+          if (!inputState[key]) {
+            this.filters[key] = false;
+          }
+        });
+      })
     );
   }
 
@@ -104,20 +113,5 @@ export class FilterTodoComponent implements OnInit {
         break;
     }
     this.filterService.setFilters(this.filters);
-  }
-
-  private isFilterEnabled(todo: Todo, value: string) {
-    let isEnabled = todo.priority === value;
-    if (this.filters.completed && this.filters.pending) {
-      return isEnabled;
-    }
-
-    if (this.filters.completed) {
-      return isEnabled && todo.status === "completed";
-    }
-
-    if (this.filters.pending) {
-      return isEnabled && todo.status === "pending";
-    }
   }
 }
