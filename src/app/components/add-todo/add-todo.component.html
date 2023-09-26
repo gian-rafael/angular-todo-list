@@ -1,4 +1,4 @@
-<section [ngClass]="{'show-add-todo pb-4 mt-4': isOpen$ | async}" class="d-flex flex-column add-todo overflow-hidden">
+<section [ngClass]="{'show-add-todo pb-2 mt-2': isOpen$ | async}" class="d-flex flex-column add-todo overflow-hidden">
   <form (ngSubmit)="addTodo(form.value, form)" #form="ngForm" class="d-flex flex-column">
     <div class="input-group px-4">
       <input type="text" class="form-control"

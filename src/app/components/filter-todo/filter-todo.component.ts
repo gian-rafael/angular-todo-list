@@ -17,6 +17,8 @@ export class FilterTodoComponent implements OnInit {
     low: true,
     medium: true,
     high: true,
+    completed: true,
+    pending: true,
   };
 
   @Input() todos$: Observable<Todo[]> = new Observable();
@@ -34,9 +36,11 @@ export class FilterTodoComponent implements OnInit {
     this.inputState$ = this.todos$.pipe(
       switchMap((todos: Todo[]) =>
         of({
-          low: todos.some((todo) => todo.priority === "low"),
-          medium: todos.some((todo) => todo.priority === "medium"),
-          high: todos.some((todo) => todo.priority === "high"),
+          low: todos.some((todo) => this.isFilterEnabled(todo, "low")),
+          medium: todos.some((todo) => this.isFilterEnabled(todo, "medium")),
+          high: todos.some((todo) => this.isFilterEnabled(todo, "high")),
+          completed: todos.some((todo) => todo.status === "completed"),
+          pending: todos.some((todo) => todo.status === "pending"),
         })
       )
     );
@@ -54,18 +58,66 @@ export class FilterTodoComponent implements OnInit {
       }
       switch (name) {
         case "low":
-          this.filters = { low: true, medium: false, high: false };
+          this.filters = {
+            low: true,
+            medium: false,
+            high: false,
+            completed: this.filters.completed,
+            pending: this.filters.pending,
+          };
           break;
         case "medium":
-          this.filters = { low: false, medium: true, high: false };
+          this.filters = {
+            low: false,
+            medium: true,
+            high: false,
+            completed: this.filters.completed,
+            pending: this.filters.pending,
+          };
           break;
         case "high":
-          this.filters = { low: false, medium: false, high: true };
+          this.filters = {
+            low: false,
+            medium: false,
+            high: true,
+            completed: this.filters.completed,
+            pending: this.filters.pending,
+          };
           break;
       }
     } else {
       this.filters[name] = !this.filters[name];
     }
     this.filterService.setFilters(this.filters);
+  }
+
+  handleStatusChange(value: string) {
+    switch (value) {
+      case "all":
+        this.filters = { ...this.filters, completed: true, pending: true };
+        break;
+      case "completed":
+        this.filters = { ...this.filters, completed: true, pending: false };
+        break;
+      case "pending":
+        this.filters = { ...this.filters, completed: false, pending: true };
+        break;
+    }
+    this.filterService.setFilters(this.filters);
+  }
+
+  private isFilterEnabled(todo: Todo, value: string) {
+    let isEnabled = todo.priority === value;
+    if (this.filters.completed && this.filters.pending) {
+      return isEnabled;
+    }
+
+    if (this.filters.completed) {
+      return isEnabled && todo.status === "completed";
+    }
+
+    if (this.filters.pending) {
+      return isEnabled && todo.status === "pending";
+    }
   }
 }

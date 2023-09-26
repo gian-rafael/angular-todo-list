@@ -2,10 +2,10 @@ import { Injectable } from "@angular/core";
 
 import { BehaviorSubject } from "rxjs";
 
-import { Priority } from "./models/todo";
+import { Priority, Status } from "./models/todo";
 
 export type FilterOptions = {
-  [key in Priority]: boolean;
+  [key in Priority | Status]: boolean;
 };
 
 @Injectable({
@@ -17,6 +17,8 @@ export class TodoFilterService {
       low: true,
       medium: true,
       high: true,
+      completed: true,
+      pending: true,
     });
 
   get filters() {

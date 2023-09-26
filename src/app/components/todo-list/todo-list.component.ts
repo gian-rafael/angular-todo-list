@@ -17,8 +17,8 @@ import { Subscription, BehaviorSubject, Subject } from "rxjs";
   selector: "app-todo-list",
   templateUrl: "./todo-list.component.html",
   styleUrls: [
-//"./todo-list.component.scss"
-],
+    //"./todo-list.component.scss"
+  ],
 })
 export class TodoListComponent implements OnChanges, OnInit, OnDestroy {
   @Input() todos: Todo[] = [];
@@ -45,9 +45,22 @@ export class TodoListComponent implements OnChanges, OnInit, OnDestroy {
       .pipe(switchMap(() => this.filterService.filters))
       .subscribe((filters) => {
         if (this.todos) {
-          this.selectedTodos$.next(
-            this.todos.filter((todo) => filters[todo.priority] === true)
+          let filtered = this.todos.filter(
+            (todo) => filters[todo.priority] === true
           );
+          if (filters.completed && filters.pending) {
+            return this.selectedTodos$.next(filtered);
+          }
+          if (filters.completed) {
+            return this.selectedTodos$.next(
+              filtered.filter((todo) => todo.status === "completed")
+            );
+          }
+          if (filters.pending) {
+            return this.selectedTodos$.next(
+              filtered.filter((todo) => todo.status === "pending")
+            );
+          }
         }
       });
   }

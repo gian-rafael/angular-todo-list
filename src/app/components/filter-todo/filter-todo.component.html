@@ -1,20 +1,33 @@
-<div class="px-4 mb-4 d-flex flex-column flex-sm-row justify-content-between justify-content-md-start align-items-sm-end align-items-start">
-  <h4 class="h4 mb-0 mr-2">Priority Filter:</h4>
-  <div class="d-flex justify-content-end">
-    <div class="custom-control custom-checkbox mr-2">
-      <input type="checkbox" class="custom-control-input" id="high" [(ngModel)]="filters.high" name="high"
-        [disabled]="!(inputState$ | async)?.high" (click)="setFilters($event)" />
-      <label class=" custom-control-label" for="high">High</label>
+<div class="px-4 pb-4 d-flex-column justify-content-between justify-content-md-start align-items-sm-end align-items-start">
+  <h4 class="h4 mb-0 mr-2">Filters:</h4>
+  <div class="d-flex flex-column flex-sm-row justify-content-sm-between">
+    <div class="d-flex flex-column justify-content-start align-items-start mr-4">
+      <h5 class="mb-1">Priority</h5>
+      <div class="d-flex justify-content-end">
+        <div class="custom-control custom-checkbox mr-2">
+          <input type="checkbox" class="custom-control-input" id="high" [(ngModel)]="filters.high" name="high"
+            [disabled]="!(inputState$ | async)?.high" (click)="setFilters($event)" />
+          <label class=" custom-control-label" for="high">High</label>
+        </div>
+        <div class="custom-control custom-checkbox mr-2">
+          <input type="checkbox" class="custom-control-input" id="medium" [(ngModel)]="filters.medium" name="medium"
+            [disabled]="!(inputState$ | async)?.medium" (click)="setFilters($event)" />
+          <label class=" custom-control-label" for="medium">Medium</label>
+        </div>
+        <div class="custom-control custom-checkbox mr-2">
+          <input type="checkbox" class="custom-control-input" id="low" [(ngModel)]="filters.low" name="low"
+            [disabled]="!(inputState$ | async)?.low" (click)="setFilters($event)" />
+          <label class=" custom-control-label" for="low">Low</label>
+        </div>
+      </div>
     </div>
-    <div class="custom-control custom-checkbox mr-2">
-      <input type="checkbox" class="custom-control-input" id="medium" [(ngModel)]="filters.medium" name="medium"
-        [disabled]="!(inputState$ | async)?.medium" (click)="setFilters($event)" />
-      <label class=" custom-control-label" for="medium">Medium</label>
-    </div>
-    <div class="custom-control custom-checkbox mr-2">
-      <input type="checkbox" class="custom-control-input" id="low" [(ngModel)]="filters.low" name="low"
-        [disabled]="!(inputState$ | async)?.low" (click)="setFilters($event)" />
-      <label class=" custom-control-label" for="low">Low</label>
+    <div class="d-flex flex-column justify-content-start align-items-start">
+      <h5 class="mb-1">Status</h5>
+      <select class="form-control" ngModel="all" (ngModelChange)="handleStatusChange($event)">
+        <option value="all" selected>All To-dos</option>
+        <option value="completed" [disabled]="!(inputState$ | async)?.completed">Completed To-dos</option>
+        <option value="pending" [disabled]="!(inputState$ | async)?.pending">Pending To-dos</option>
+      </select>
     </div>
   </div>
 </div>
