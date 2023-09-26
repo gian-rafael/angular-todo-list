@@ -42,9 +42,17 @@ body {
   transition: 0.3s ease;
 }
 
-.btn {
-  &-close {
+.btn-close {
+  .add-close {
     transform: rotate(45deg);
+  }
+}
+
+.btn {
+  &:hover {
+    i {
+      transform: rotate(15deg);
+    }
   }
 }
 
@@ -53,5 +61,11 @@ body {
 
   &.show-add-todo {
     max-height: 10rem;
+  }
+}
+
+.todo-item {
+  &:hover {
+    transform: scale(1.03)
   }
 }

@@ -1,4 +1,4 @@
-<div class="col-12 offset-lg-3 col-lg-6" *ngIf="todos && todos.length > 0">
+<div class="col-12 col-lg-8 offset-lg-2 col-xl-6 offset-xl-3" *ngIf="todos && todos.length > 0">
   <app-todo-item *ngFor="let todo of selectedTodos$ | async" [todo]="todo" (edit)="onEdit($event)"
     (toggle)="onToggle($event)" (delete)="onDelete($event)"></app-todo-item>
 </div>
