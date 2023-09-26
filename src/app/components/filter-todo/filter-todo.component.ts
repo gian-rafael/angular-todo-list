@@ -9,8 +9,8 @@ import { switchMap } from "rxjs/operators";
   selector: "app-filter-todo",
   templateUrl: "./filter-todo.component.html",
   styleUrls: [
-//"./filter-todo.component.scss"
-],
+    //"./filter-todo.component.scss"
+  ],
 })
 export class FilterTodoComponent implements OnInit {
   filters: FilterOptions = {
@@ -49,7 +49,9 @@ export class FilterTodoComponent implements OnInit {
   setFilters(event: Event) {
     const { name } = event.target as HTMLInputElement;
     if (this.controlPressed) {
-      event.preventDefault();
+      if (this.filters[name] === true) {
+        event.preventDefault();
+      }
       switch (name) {
         case "low":
           this.filters = { low: true, medium: false, high: false };
